@@ -6,6 +6,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -w -r 0",
     "commit": "git-cz"
   },
   "dependencies": {
@@ -30,10 +31,10 @@
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
+    },
+    "gitHooks": {
+      "pre-commit": "npm run lint",
+      "commit-msg": "node ./verify-commit-msg.js"
     }
-  },
-  "gitHooks": {
-    "pre-commit": "npm run lint",
-    "commit-msg": "node scripts/verify-commit-msg.js"
   }
 }
